@@ -1,8 +1,57 @@
+/* Text size levels: scale the --crm-font-size family of variables (default leaves the stream's own values untouched) */
+:root[data-civi-font-size="small"] { --crm-user-font-scale: 0.8; }
+:root[data-civi-font-size="big"] { --crm-user-font-scale: 1.25; }
+
+:root[data-civi-font-size]:not([data-civi-font-size="default"]) {
+  --crm-font-size: calc(var(--crm-l-reg) * var(--crm-user-font-scale));
+  --crm-font-small-size: calc(var(--crm-l-medium-2) * var(--crm-user-font-scale));
+  --crm-font-medium-size: calc(var(--crm-l-reg-2) * var(--crm-user-font-scale));
+}
+
+/* Picker: graduated "A" glyphs in a pill, sized in px so the picker itself never rescales.
+   Each option is a 44px square target (WCAG 2.5.5), whatever the size of its glyph. */
 civi-riverlea-font-size-control {
   display: block;
 
-  button {
-    border: none;
-    background: none;
+  .civi-riverlea-font-size-control-wrap {
+    padding: 4px var(--crm-padding-medium);
+    display: flex;
+    align-items: center;
+  }
+
+  .civi-riverlea-font-size-picker {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px;
+    border-radius: 100px;
+    background: var(--crm-input-toggle-button-bg);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, .4);
+  }
+
+  .civi-riverlea-font-size-option {
+    border: 0;
+    border-radius: 100px;
+    background: transparent;
+    color: var(--crm-text-color);
+    font-family: inherit;
+    font-weight: bold;
+    line-height: 1;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    cursor: pointer;
+  }
+  .civi-riverlea-font-size-option[data-mode="small"] { font-size: 13px; }
+  .civi-riverlea-font-size-option[data-mode="default"] { font-size: 17px; }
+  .civi-riverlea-font-size-option[data-mode="big"] { font-size: 22px; }
+
+  .civi-riverlea-font-size-option[aria-checked="true"] {
+    background: var(--crm-input-toggle-enabled-bg);
+    color: var(--crm-c-white, #fff);
+  }
+  .civi-riverlea-font-size-option:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--crm-focus-color);
   }
 }
