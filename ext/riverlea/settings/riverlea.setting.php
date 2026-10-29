@@ -34,7 +34,7 @@ return [
     'is_contact' => 0,
     'help_text' => E::ts('Enable users to tweak the theme to their preferences.'),
     // The menubar's UserMenu items depend on this, and the menubar is cached per contact.
-    'on_change' => ['CRM_Core_BAO_Navigation::flushCache'],
+    'post_change' => ['CRM_Core_BAO_Navigation::flushCache'],
     'options' => [
       'font-size' => E::ts('Font size'),
       'dark-mode' => E::ts('Dark-mode'),

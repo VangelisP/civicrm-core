@@ -209,6 +209,8 @@ body.crm-menubar-over-cms-menu #crm-menubar-toggle-position a i {
 }
 #civicrm-menu .crm-menubar-usermenu-toggle i {
   margin: 0;
+  /* same 24px circle as the theme switch knob and the text size options inside the panel */
+  font-size: 24px;
 }
 #civicrm-menu .crm-menubar-usermenu-toggle:hover,
 #civicrm-menu .crm-menubar-usermenu-toggle[aria-expanded="true"] {
